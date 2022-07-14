@@ -81,62 +81,9 @@ Download-Size:                8.00 MB
 Download-Rate:                5.48 MB/s
 ```
 
-## Building
-
-Install the libssh-dev (or libssh-devel) package, version 0.6 or later:
-
-    sudo apt-get install libssh-dev
-      ...or
-    sudo yum install libssh-devel
-      ...or whatever works on your platform
-
-From the main directory (where this README.md file is located), run 'make':
-
-    cd sshping
-    make
-
-The resultant binary will be in the bin/ directory.  You may copy this to 
-your system binary location, for example:
-
-    sudo cp bin/sshping /usr/local/bin/
-    sudo chown root.root /usr/local/bin/sshping
-    sudo chmod 555 /usr/local/bin/sshping
-
-To build the man pages, install the pod2man utility (you may already
-have it installed, it's often part of standard Perl). Then run 'make man'.
-The resulting uncompressed man page will be in the doc/ directory.
-You can view it from there (man doc/sshping.8) but normally it's placed
-in /usr/share/man/man8 in gzip'd format:
-
-    sudo cp doc/sshping.8 /usr/share/man/man8/
-    sudo gzip /usr/share/man/man8/sshping.8
-    sudo chown root.root /usr/share/man/man8/sshping.8.gz
-    sudo chmod 644 /usr/share/man/man8/sshping.8.gz
-
-That's it!
-
-### Building with CMake
-
-You can build this with CMake, which includes creating .deb 
-or .rpm packages.  Here's how:
-
-First, install libssh as above.  It's a prerequisite.
-And of course you need CMake.
-Then from the main directory (where this README.md file is located):
-
-    mkdir build
-    cd build
-    cmake ..
-    make
-    make package
-
-You will find the binary `sshping` as well as the .deb and/or .rpm
-file in the current (build) directory.  Install those as you
-would any other package.
-
-Or you can directly install on the current system with:
-
-    sudo make install
-
-Enjoy!
+## Building on macOS Apple Silicon
+```
+brew install libssh
+make sshping
+```
 

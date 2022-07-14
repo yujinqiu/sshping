@@ -1,17 +1,14 @@
 # See https://github.com/spook/sshping
 
 .PHONY=default sshping man
+CFLAGS=-I /opt/homebrew/include -I ext -L /opt/homebrew/lib -lssh
 
 default: sshping
 
 sshping: bin/sshping
 
-bin/sshping: src/sshping.cxx /usr/include/libssh/libssh.h
-	g++ -Wall -I ext/ -o bin/sshping src/sshping.cxx -lssh
-
-/usr/include/libssh/libssh.h:
-	echo '*** Please install libssh-dev, libssh-devel, or similar package'
-	exit 2
+bin/sshping: src/sshping.cxx
+	g++ -Wall -o bin/sshping $(CFLAGS) src/sshping.cxx
 
 man: doc/sshping.8.gz
 
